@@ -1,0 +1,689 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday, Yotha Bhai!</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700;800&display=swap');
+
+:root {
+  --pink:#f8dce9;
+  --lavender:#e7e0ff;
+  --blue:#dff0ff;
+  --yellow:#fff0c9;
+  --cream:#fffaf4;
+  --sage:#e2efdf;
+  --ink:#58485e;
+  --muted:#8c7c91;
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--cream);color:var(--ink);font-family:'DM Sans',sans-serif;min-height:100vh}
+button{font-family:inherit;cursor:pointer;border:0}
+
+header{
+  text-align:center;
+  padding:38px 18px 28px;
+  background:linear-gradient(135deg,#ffe3ed,#eee6ff,#e2f2ff);
+  border-radius:0 0 30px 30px;
+}
+.tag{
+  display:inline-block;
+  background:white;
+  padding:7px 14px;
+  border-radius:30px;
+  font-size:10px;
+  letter-spacing:1.5px;
+  color:#98758f;
+  font-weight:800;
+  margin-bottom:15px;
+}
+h1{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(34px,9vw,48px);
+  line-height:1.12;
+  color:#664e6b;
+}
+header p{font-size:13px;color:#806f83;margin-top:12px}
+
+nav{
+  display:flex;
+  justify-content:center;
+  gap:7px;
+  padding:14px 8px;
+  position:sticky;
+  top:0;
+  z-index:10;
+  background:rgba(255,250,244,.95);
+}
+nav button{
+  background:white;
+  color:#806c83;
+  border:1px solid #eee2eb;
+  border-radius:25px;
+  padding:10px 12px;
+  font-size:11px;
+  font-weight:700;
+}
+nav button.active{background:#e9c9dd;color:#634b65}
+
+.page{display:none;max-width:650px;margin:auto;padding:18px 16px 45px}
+.page.active{display:block}
+.heading{font-family:'Playfair Display',serif;font-size:26px;margin:10px 0 7px}
+.sub{font-size:12px;color:var(--muted);line-height:1.7;margin-bottom:20px}
+
+.progress{
+  background:white;
+  border:1px solid #f0e5ec;
+  border-radius:17px;
+  padding:15px;
+  margin-bottom:20px;
+}
+.progress-top{display:flex;justify-content:space-between;font-size:12px;font-weight:700;margin-bottom:9px}
+.track{height:8px;background:#f2e9ef;border-radius:20px;overflow:hidden}
+.fill{height:100%;width:0;background:linear-gradient(90deg,#eaa9c8,#b8a5eb);transition:.3s}
+
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.gift{
+  min-height:160px;
+  border-radius:21px;
+  padding:16px 11px;
+  text-align:center;
+  border:1px solid rgba(90,60,90,.06);
+  transition:.2s;
+}
+.gift:active{transform:scale(.97)}
+.gift:nth-child(1){background:#f6dce7}
+.gift:nth-child(2){background:#e9e1ff}
+.gift:nth-child(3){background:#dff0ff}
+.gift:nth-child(4){background:#fff0ca}
+.gift:nth-child(5){background:#e3efdf}
+.gift:nth-child(6){background:#f8e2ee}
+.gift:nth-child(7){background:#e5e2ff}
+.gift .emoji{font-size:38px;display:block;margin-bottom:10px}
+.gift h3{font-size:14px;margin-bottom:5px}
+.gift p{font-size:10px;color:#817287;line-height:1.5}
+.status{display:inline-block;background:#ffffffa8;border-radius:20px;padding:5px 10px;font-size:9px;font-weight:800;margin-top:10px}
+.featured{grid-column:1/-1;min-height:215px;background:linear-gradient(135deg,#f5d9e6,#e5dcff)!important}
+.featured .emoji{font-size:54px}
+.featured h3{font-size:19px}
+.featured p{font-size:12px}
+
+.note{
+  background:white;
+  border:1px dashed #e6bfd3;
+  border-radius:17px;
+  padding:15px;
+  margin-top:20px;
+  text-align:center;
+  color:#826f83;
+  font-size:12px;
+  line-height:1.7;
+}
+
+.arcade{
+  padding:18px;
+  border-radius:20px;
+  margin:13px 0;
+  border:1px solid #eee4ed;
+  background:white;
+}
+.arcade:nth-of-type(2){background:#f9e7ef}
+.arcade:nth-of-type(3){background:#eee9ff}
+.arcade:nth-of-type(4){background:#e6f3ff}
+.arcade:nth-of-type(5){background:#fff3d5}
+.arcade h3{font-size:16px;margin-bottom:7px}
+.arcade p{font-size:11px;color:#84748a;line-height:1.6;margin-bottom:13px}
+.play{
+  background:#755e7c;color:white;
+  border-radius:12px;padding:11px 16px;
+  font-size:12px;font-weight:700;
+}
+.game-status{font-size:11px;color:#92718e;margin-top:10px;font-weight:700}
+
+.vault{
+  background:linear-gradient(145deg,#e8ddff,#f9dce9,#e1f0ff);
+  border-radius:25px;padding:35px 20px;
+  text-align:center;margin-top:20px;
+}
+.vault-icon{font-size:60px;margin-bottom:14px}
+.vault h2{font-family:'Playfair Display',serif;font-size:26px;margin-bottom:10px}
+.vault p{font-size:12px;color:#78677f;line-height:1.7}
+.vault-message{background:white;padding:15px;border-radius:15px;font-size:12px;line-height:1.7;margin-top:20px}
+
+.modal-bg{
+  display:none;position:fixed;inset:0;
+  z-index:100;background:#30233580;
+  align-items:center;justify-content:center;padding:15px;
+}
+.modal-bg.show{display:flex}
+.modal{
+  background:var(--cream);width:100%;max-width:430px;
+  max-height:88vh;overflow-y:auto;
+  border-radius:23px;padding:22px 18px;position:relative;
+  animation:pop .2s ease;
+}
+@keyframes pop{from{transform:scale(.94);opacity:0}to{transform:scale(1);opacity:1}}
+.close{
+  position:absolute;right:13px;top:12px;
+  width:31px;height:31px;border-radius:50%;
+  background:#f1e4ed;color:#765e77;font-size:19px;
+}
+.modal h2{font-family:'Playfair Display',serif;font-size:24px;margin:17px 0 12px;padding-right:25px}
+.modal p{font-size:13px;line-height:1.8;color:#776a7c}
+.letter{
+  background:white;padding:17px;border-radius:15px;
+  margin-top:12px;font-size:13px;line-height:1.9;
+  white-space:pre-line;color:#69576c;
+}
+.choice{
+  display:block;width:100%;text-align:left;
+  padding:12px;margin-top:9px;
+  border-radius:12px;background:white;
+  color:#69566f;border:1px solid #eadde8;
+  font-size:12px;font-weight:700;
+}
+.action{
+  background:#755e7c;color:white;
+  padding:12px 17px;border-radius:12px;
+  font-size:12px;font-weight:700;margin-top:12px;
+}
+.coupon{
+  border:2px dashed #e4a9c6;background:white;
+  padding:15px;border-radius:13px;margin:10px 0;
+  text-align:center;font-size:13px;font-weight:700;
+}
+.car-photo{width:100%;border-radius:15px;margin:13px 0;display:block}
+.scratch{
+  background:linear-gradient(135deg,#e8dcff,#f9d9e8);
+  border-radius:14px;padding:20px;margin:10px 0;
+  text-align:center;font-size:13px;font-weight:700;
+  cursor:pointer;color:#634e6c;
+}
+.scratch.revealed{background:white;border:1px dashed #d7a5c2}
+.cake{text-align:center;font-size:75px;margin:15px}
+footer{text-align:center;color:#a28e9e;font-size:10px;padding:20px}
+
+@media(max-width:360px){
+  nav button{padding:9px 8px;font-size:10px}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="tag">A LITTLE BIRTHDAY SURPRISE</div>
+  <h1>Happy Birthday,<br>Yotha Bhai!</h1>
+  <p>One birthday. Seven gifts. Unlimited nonsense.</p>
+</header>
+
+<nav>
+  <button class="active" onclick="showPage('gifts',this)">Mystery Gifts</button>
+  <button onclick="showPage('arcade',this)">Pastel Arcade</button>
+  <button onclick="showPage('vault',this)">Secret Vault</button>
+</nav>
+
+<section class="page active" id="gifts">
+  <h2 class="heading">Your mystery presents</h2>
+  <p class="sub">Every box has something inside. Open all seven to unlock your secret vault.</p>
+
+  <div class="progress">
+    <div class="progress-top">
+      <span>Gifts opened</span><span id="giftCount">0 / 7</span>
+    </div>
+    <div class="track"><div class="fill" id="giftProgress"></div></div>
+  </div>
+
+  <div class="grid">
+
+    <button class="gift featured" onclick="openGift(0)">
+      <span class="emoji">🎁</span>
+      <h3>The BIGGEST Surprise</h3>
+      <p>Something you've probably not expected...</p>
+      <span class="status" id="status0">OPEN PRESENT</span>
+    </button>
+
+    <button class="gift" onclick="openGift(1)">
+      <span class="emoji">💌</span>
+      <h3>A Letter For You</h3>
+      <p>Some words from your favourite nuisance.</p>
+      <span class="status" id="status1">SEALED</span>
+    </button>
+
+    <button class="gift" onclick="openGift(2)">
+      <span class="emoji">🎧</span>
+      <h3>Soundtrack</h3>
+      <p>Soft Hindi songs for your playlist.</p>
+      <span class="status" id="status2">SEALED</span>
+    </button>
+
+    <button class="gift" onclick="openGift(3)">
+      <span class="emoji">🎟️</span>
+      <h3>Friendship Coupons</h3>
+      <p>Redeemable for important bhai privileges.</p>
+      <span class="status" id="status3">SEALED</span>
+    </button>
+
+    <button class="gift" onclick="openGift(4)">
+      <span class="emoji">💬</span>
+      <h3>Random Messages</h3>
+      <p>Little reminders for random days.</p>
+      <span class="status" id="status4">SEALED</span>
+    </button>
+
+    <button class="gift" onclick="openGift(5)">
+      <span class="emoji">🌸</span>
+      <h3>Scratch Cards</h3>
+      <p>Three tiny surprises waiting for you.</p>
+      <span class="status" id="status5">SEALED</span>
+    </button>
+
+    <button class="gift" onclick="openGift(6)">
+      <span class="emoji">🎂</span>
+      <h3>Birthday Cake</h3>
+      <p>Make a wish. It's your day!</p>
+      <span class="status" id="status6">SEALED</span>
+    </button>
+
+  </div>
+
+  <div class="note">
+    A random GC brought us here. Now look at you, getting a whole website. Don't get used to this.
+  </div>
+</section>
+
+<section class="page" id="arcade">
+  <h2 class="heading">The Pastel Arcade</h2>
+  <p class="sub">Four little games. Win any three to unlock another surprise.</p>
+
+  <div class="progress">
+    <div class="progress-top">
+      <span>Games won</span><span id="gameCount">0 / 3</span>
+    </div>
+    <div class="track"><div class="fill" id="gameProgress"></div></div>
+  </div>
+
+  <div class="arcade">
+    <h3>01. Birthday Quiz</h3>
+    <p>Let's see how well you know the person who made this website.</p>
+    <button class="play" onclick="startQuiz()">Play quiz</button>
+    <div class="game-status" id="quizStatus">Not played yet</div>
+  </div>
+
+  <div class="arcade">
+    <h3>02. Pick Your Fate</h3>
+    <p>Choose one mystery door. Your fate is waiting.</p>
+    <button class="play" onclick="startFate()">Choose a door</button>
+    <div class="game-status" id="fateStatus">Not played yet</div>
+  </div>
+
+  <div class="arcade">
+    <h3>03. Fortune Cookie</h3>
+    <p>Need some birthday wisdom? Crack open your fortune.</p>
+    <button class="play" onclick="startFortune()">Open fortune</button>
+    <div class="game-status" id="fortuneStatus">Not played yet</div>
+  </div>
+
+  <div class="arcade">
+    <h3>04. Lucky Number</h3>
+    <p>Guess the lucky number between 1 and 5.</p>
+    <button class="play" onclick="startLucky()">Play now</button>
+    <div class="game-status" id="luckyStatus">Not played yet</div>
+  </div>
+</section>
+
+<section class="page" id="vault">
+  <h2 class="heading">The Secret Vault</h2>
+  <p class="sub">Not every surprise is meant to be opened immediately.</p>
+
+  <div class="vault">
+    <div class="vault-icon" id="vaultIcon">🔒</div>
+    <h2 id="vaultTitle">Access Denied</h2>
+    <p id="vaultText">This little secret is waiting for you.</p>
+
+    <div class="vault-message" id="vaultMessage">
+      Open all 7 mystery gifts and win 3 arcade games to unlock this vault.
+    </div>
+
+    <div id="vaultContent" style="display:none;margin-top:20px">
+      <h2>YOU DID IT!</h2>
+      <p>Congratulations, professional gift opener. Here's your final surprise:</p>
+      <div class="letter">
+One last thing, bhai...
+
+No matter how busy life gets, I hope we never become those people who only say "hi" once in six months.
+
+Keep being your chaotic self. Keep laughing, keep dreaming big and keep annoying everyone around you.
+
+I'm genuinely glad that random GC happened.
+
+Happy birthday once again. You deserve the best.
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>Made with love, chaos and questionable levels of effort.</footer>
+
+<div class="modal-bg" id="modalBg" onclick="outsideClose(event)">
+  <div class="modal">
+    <button class="close" onclick="closeModal()">×</button>
+    <div id="modalContent"></div>
+  </div>
+</div>
+
+<script>
+const opened = [false,false,false,false,false,false,false];
+
+const wins = {
+  quiz:false,
+  fate:false,
+  fortune:false,
+  lucky:false
+};
+
+let fateCorrect = 0;
+let luckyAnswer = 0;
+
+const birthdayLetter = `Happy birthday to mera yotha bhaiii... 🩷🎀 The one jisko mai kuch bhi bata sakti hu without thinking twice... From randomly talking in a GC to having our own adda in Bengali... who knew ek random GC se itna achha bond ban jayega. Honestly everything about our bond means a lot to me... Tu un few people mein se hai jinke saath I can be my completely unfiltered self. Thank you for tolerating my endless bakbak and nonsense... ik it's not an easy job 😭😋
+
+Bhai hamesha khush rehna and healthy rehna... May you get everything you wish for and achieve everything you dream of... Bas thoda dimag bhi use kar liya kar kabhi kabhi because sweetness ke saath stupidity bhi free mein mili hai tujhe... 🤏😂 Jokes apart you're genuinely one of the sweetest souls I've ever met online and I'm so glad that random GC brought us together... Never change pagal insaan... Lots of love bhaiii... 🪷✨️🩷`;
+
+const messages = [
+  "Reminder: You're genuinely one of the sweetest people. Don't let the world convince you otherwise.",
+  "Drink water. Eat properly. And please use your brain occasionally.",
+  "I hope something unexpectedly good happens to you today.",
+  "Your existence is appreciated. Your stupidity is tolerated.",
+  "May your bank balance grow faster than your problems.",
+  "Never stop being the person who makes random conversations fun.",
+  "You deserve good things, good people and a lot of happiness."
+];
+
+const fortunes = [
+  "A big opportunity is waiting for you. Don't be scared to take it.",
+  "Your future self is going to be proud of you.",
+  "A random conversation might become a beautiful memory.",
+  "Your hard work will pay off. Keep going.",
+  "Something good is closer than you think."
+];
+
+function showPage(id, button) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  document.querySelectorAll('nav button').forEach(b => b.classList.remove('active'));
+  button.classList.add('active');
+}
+
+function openModal(html) {
+  document.getElementById('modalContent').innerHTML = html;
+  document.getElementById('modalBg').classList.add('show');
+}
+
+function closeModal() {
+  document.getElementById('modalBg').classList.remove('show');
+}
+
+function outsideClose(event) {
+  if (event.target.id === 'modalBg') closeModal();
+}
+
+function escapeHTML(str) {
+  return str.replace(/[&<>"']/g, function(char) {
+    return {
+      '&':'&amp;',
+      '<':'&lt;',
+      '>':'&gt;',
+      '"':'&quot;',
+      "'":'&#039;'
+    }[char];
+  });
+}
+
+function markGift(index) {
+  if (!opened[index]) {
+    opened[index] = true;
+    document.getElementById('status' + index).textContent = 'OPENED ✓';
+  }
+
+  const count = opened.filter(Boolean).length;
+  document.getElementById('giftCount').textContent = count + ' / 7';
+  document.getElementById('giftProgress').style.width = (count / 7 * 100) + '%';
+  updateVault();
+}
+
+function openGift(index) {
+  markGift(index);
+
+  if (index === 0) {
+    openModal(`
+      <div class="tag">THE BIG SURPRISE</div>
+      <h2>Your dream car gift!</h2>
+      <p>Because an ordinary birthday gift was clearly not enough...</p>
+      <img class="car-photo" src="lamborghini.jpg" alt="Lamborghini birthday gift"
+        onerror="this.style.display='none';document.getElementById('carMissing').style.display='block';">
+      <div id="carMissing" style="display:none;background:#f5e7f0;padding:20px;border-radius:15px;text-align:center;margin:12px 0">
+        <div style="font-size:50px">🏎️</div>
+        <p><b>Photo coming soon!</b><br>Add your Lamborghini photo as <b>lamborghini.jpg</b> in the same folder as index.html.</p>
+      </div>
+      <p>Consider this your virtual Lamborghini. Actual keys are still pending. Don't call the dealership yet.</p>
+    `);
+  }
+
+  if (index === 1) {
+    openModal(`
+      <div class="tag">A LITTLE NOTE</div>
+      <h2>Dear Yotha Bhai...</h2>
+      <div class="letter">${escapeHTML(birthdayLetter)}</div>
+    `);
+  }
+
+  if (index === 2) {
+    openModal(`
+      <div class="tag">YOUR SOUNDTRACK</div>
+      <h2>Soft Hindi songs</h2>
+      <p>A little playlist for peaceful evenings, random nostalgia and main-character moments.</p>
+      <div class="letter">
+01. Iktara
+02. Shaam
+03. Saibo
+04. Tum Se Hi
+05. Kasoor
+      </div>
+      <a href="https://open.spotify.com/playlist/5s1Y3rjhCTBKg9Qx99VIwO" target="_blank" rel="noopener"
+        style="display:block;text-decoration:none;text-align:center;background:#755e7c;color:white;padding:13px;border-radius:13px;margin-top:15px;font-size:13px;font-weight:bold">
+        OPEN SPOTIFY PLAYLIST
+      </a>
+    `);
+  }
+
+  if (index === 3) {
+    openModal(`
+      <div class="tag">OFFICIAL BHAI PRIVILEGES</div>
+      <h2>Friendship Coupons</h2>
+      <p>Use these whenever you want. Terms and conditions: I make the rules.</p>
+      <div class="coupon">One unlimited rant session</div>
+      <div class="coupon">One emergency advice session</div>
+      <div class="coupon">One free pass for annoying me</div>
+      <div class="coupon">One random Bengali adda</div>
+      <div class="coupon">One virtual birthday treat</div>
+      <div class="coupon">Unlimited friendship privileges</div>
+    `);
+  }
+
+  if (index === 4) {
+    const msg = messages[Math.floor(Math.random() * messages.length)];
+    openModal(`
+      <div class="tag">A RANDOM REMINDER</div>
+      <h2>Hey, you!</h2>
+      <div class="letter" style="text-align:center;font-size:15px">${msg}</div>
+      <button class="action" onclick="openGift(4)">ANOTHER MESSAGE</button>
+    `);
+  }
+
+  if (index === 5) {
+    openModal(`
+      <div class="tag">THREE LITTLE SURPRISES</div>
+      <h2>Scratch your cards</h2>
+      <p>Tap each card to reveal what's inside.</p>
+      <div class="scratch" onclick="revealScratch(this,'You are officially allowed to be extra dramatic today.')">SCRATCH CARD 01 — TAP ME</div>
+      <div class="scratch" onclick="revealScratch(this,'One free pass to act like the birthday celebrity.')">SCRATCH CARD 02 — TAP ME</div>
+      <div class="scratch" onclick="revealScratch(this,'Your friendship is a gift. Unfortunately, so is your stupidity.')">SCRATCH CARD 03 — TAP ME</div>
+    `);
+  }
+
+  if (index === 6) {
+    openModal(`
+      <div class="tag">MAKE A WISH</div>
+      <h2>Happy Birthday!</h2>
+      <div class="cake">🎂</div>
+      <p style="text-align:center">Make a wish and blow out your imaginary candles.</p>
+      <button class="action" style="width:100%" onclick="blowCandles(this)">BLOW THE CANDLES</button>
+      <p id="cakeResult" style="text-align:center;margin-top:15px"></p>
+    `);
+  }
+}
+
+function revealScratch(element, message) {
+  if (element.classList.contains('revealed')) return;
+  element.classList.add('revealed');
+  element.textContent = message;
+}
+
+function blowCandles(button) {
+  button.textContent = 'WISH SENT!';
+  button.disabled = true;
+  document.getElementById('cakeResult').textContent =
+    'May this year bring you happiness, success and everything you have been wishing for.';
+}
+
+function updateGames() {
+  const count = Object.values(wins).filter(Boolean).length;
+  document.getElementById('gameCount').textContent = count + ' / 3';
+  document.getElementById('gameProgress').style.width =
+    (Math.min(count,3) / 3 * 100) + '%';
+  updateVault();
+}
+
+function winGame(name, statusId) {
+  if (!wins[name]) {
+    wins[name] = true;
+    document.getElementById(statusId).textContent = 'WON ✓';
+    updateGames();
+  }
+}
+
+function startQuiz() {
+  openModal(`
+    <div class="tag">BIRTHDAY QUIZ</div>
+    <h2>Who is the biggest nuisance?</h2>
+    <p>Choose your answer carefully.</p>
+    <button class="choice" onclick="quizAnswer(false)">A. Me, obviously</button>
+    <button class="choice" onclick="quizAnswer(true)">B. You, obviously</button>
+    <button class="choice" onclick="quizAnswer(false)">C. Both of us</button>
+    <p id="quizResult" style="margin-top:12px"></p>
+  `);
+}
+
+function quizAnswer(correct) {
+  const result = document.getElementById('quizResult');
+
+  if (correct) {
+    result.textContent = 'Correct! At least you know yourself. You won this round.';
+    winGame('quiz','quizStatus');
+  } else {
+    result.textContent = 'Wrong answer. Try again. Your self-awareness needs work.';
+  }
+}
+
+function startFate() {
+  fateCorrect = Math.floor(Math.random() * 3) + 1;
+
+  openModal(`
+    <div class="tag">PICK YOUR FATE</div>
+    <h2>Choose one mystery door</h2>
+    <p>Only one door contains a birthday blessing. Pick wisely.</p>
+    <button class="choice" onclick="fateAnswer(1)">Door 01</button>
+    <button class="choice" onclick="fateAnswer(2)">Door 02</button>
+    <button class="choice" onclick="fateAnswer(3)">Door 03</button>
+    <p id="fateResult" style="margin-top:12px"></p>
+  `);
+}
+
+function fateAnswer(choice) {
+  const result = document.getElementById('fateResult');
+
+  if (choice === fateCorrect) {
+    result.textContent = 'You found the lucky door! Birthday luck is on your side.';
+    winGame('fate','fateStatus');
+  } else {
+    result.textContent = 'Not this one! Pick another door.';
+  }
+}
+
+function startFortune() {
+  const fortune = fortunes[Math.floor(Math.random() * fortunes.length)];
+
+  openModal(`
+    <div class="tag">YOUR FORTUNE</div>
+    <h2>Birthday Fortune Cookie</h2>
+    <div class="letter" style="text-align:center">
+      <div style="font-size:45px;margin-bottom:12px">🥠</div>
+      ${fortune}
+    </div>
+    <p style="text-align:center;margin-top:15px">Your fortune has been delivered.</p>
+    <button class="action" style="width:100%" onclick="winGame('fortune','fortuneStatus');closeModal()">CLAIM MY FORTUNE</button>
+  `);
+}
+
+function startLucky() {
+  luckyAnswer = Math.floor(Math.random() * 5) + 1;
+
+  openModal(`
+    <div class="tag">LUCKY NUMBER</div>
+    <h2>Guess the number</h2>
+    <p>Pick a number between 1 and 5.</p>
+    <div style="display:flex;gap:8px;margin-top:15px">
+      ${[1,2,3,4,5].map(n => `<button class="play" style="flex:1;padding:14px 5px" onclick="guessLucky(${n})">${n}</button>`).join('')}
+    </div>
+    <p id="luckyResult" style="margin-top:15px"></p>
+  `);
+}
+
+function guessLucky(number) {
+  const result = document.getElementById('luckyResult');
+
+  if (number === luckyAnswer) {
+    result.textContent = 'LUCKY YOU! Correct answer. You won!';
+    winGame('lucky','luckyStatus');
+  } else {
+    result.textContent = 'Nope! Try another number.';
+  }
+}
+
+function updateVault() {
+  const giftsDone = opened.every(Boolean);
+  const gamesDone = Object.values(wins).filter(Boolean).length >= 3;
+
+  if (giftsDone && gamesDone) {
+    document.getElementById('vaultIcon').textContent = '🔓';
+    document.getElementById('vaultTitle').textContent = 'Vault Unlocked!';
+    document.getElementById('vaultText').textContent = 'You completed everything. One final message awaits.';
+    document.getElementById('vaultMessage').style.display = 'none';
+    document.getElementById('vaultContent').style.display = 'block';
+  } else {
+    const remainingGifts = opened.filter(x => !x).length;
+    const remainingGames = Math.max(0,3 - Object.values(wins).filter(Boolean).length);
+
+    document.getElementById('vaultMessage').textContent =
+      'Gifts remaining: ' + remainingGifts +
+      ' | Arcade wins remaining: ' + remainingGames +
+      '. Complete both challenges to unlock this vault.';
+  }
+}
+</script>
+
+</body>
+</html>
